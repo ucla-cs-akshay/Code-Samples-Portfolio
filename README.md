@@ -24,7 +24,7 @@ Kind request to the reviewer to please ping me for full project code,
 and/or detailed discussion about my specific design / engineering choices
 such as my approach / intention / thinking.
 
-### Directory Structure
+### Overview
 
 ```
   1. C++ Object-Oriented/
