@@ -1,17 +1,21 @@
+### TypeScript REST API
+---
+
+* Taken from proxy wrapper API for Google Calendar
+* uses Restify node.js framework
+
+
 ```typescript
 
+/** middleware */
 const plugins: Restify.RequestHandler[] = [
   userDocumentPopulator,
   orgDocumentPopulator,
   gcalSyncLicenseValidator,
-  getGCalOAuthTokenRefresherPlugin({
-    clientID: nconf.get(Constants.CONF_GOOGLE_OAUTH_CLIENT_ID),
-    refreshEndPoint: nconf.get(Constants.CONF_GOOGLE_OAUTH_REFRESH_ENDPOINT),
-    clientSecret: nconf.get(Constants.CONF_GOOGLE_OAUTH_CLIENT_SECRET)
-  })
 ];
 
 
+/** route path pattern to middleware + handler mapping */
 export = (router: Restify.Server) => {
   router.get("/calendar/:calendarID/event/:calendarEventID", plugins.concat(CalendarRoutes.getCalendarEvent));
   router.get("/calendar/:id/events", plugins.concat(CalendarRoutes.listCalendarEvents));
@@ -20,6 +24,7 @@ export = (router: Restify.Server) => {
 };
 
 
+/** route handler repository */
 class CalendarRoutes {
 
   public static getCalendarEvent(req: Restify.Request, res: Restify.Response, next: Restify.Next): Promise<void> {

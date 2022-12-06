@@ -1,25 +1,21 @@
-### C++ code sample notebook
+### C++ (Object Oriented) code sample notebook
 ---
 
-Following is sample C++ source-code [`Actor.cpp`, `Actor.h`] taken from
-one of my academic projects (TunnelMan game) at UCLA.
 
-The objective was to implement a single-player graphical (2-D grid) game, given :-
-* an OpenGL/GLUT project code skeleton, with game-controller and asset files
-* intended game rules & logic that involved several computer controlled
-actors that interacted with the player, and miscellaneous collectible objects.
 
 
 ```cpp
+
+/** Actor.cpp */
+
 #include "Actor.h"
 #include "StudentWorld.h"
 
-// Students:  Add code to this file (if you wish), Actor.h, StudentWorld.h, and
-// StudentWorld.cpp
 
 Actor::Actor(int imageID, int x, int y, Direction dir, int depth, bool visible,
              StudentWorld* world)
-    : GraphObject(imageID, x, y, dir, 1, depth) {
+  : GraphObject(imageID, x, y, dir, 1, depth)
+{
   m_alive = true;
   setVisible(visible);
   m_world = world;

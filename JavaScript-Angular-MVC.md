@@ -1,52 +1,13 @@
-## MVC Angular Web Application
-
-```
-• JavaScript  • Angular.js  • Google Chrome WebExtension SDK
-```
+## JavaScript Angular.js MVC Web Application
 ---
 
-### Overview
-
-Angular.js web application. Most logic is client-side, including routing.
-  * MVC architecture
-
-The Google Chrome WebExtension injects the app into the Gmail webpage,
-as a sidebar WebPlugin. Also coordinates asynchronous messages between :-
-  * Gmail webpage
-  * App
-  * NetSuite iframe
-
-
-### Directory Structure
-
-```
-.
-├── app
-│   ├── controllers
-|   |       • Angular.js UI controllers
-|   |           • component state, event handlers, user interactions
-│   ├── directives
-|   |       • Angular.js directives (onLoad, onResize)
-│   ├── filters
-|   |       • Angular.js filters
-│   ├── index.html
-|   |       • main container html file
-│   ├── index.js
-|   |       • main / entrypoint
-│   ├── services
-|	|		• business logic services
-|	|		• app wide background singleton services
-│   └── views
-|			• component templates
-└── webextension
-        • webextension background logic
-```
+* Angular.js web application.
+* MVC architecture
+* single page application
+  * client-side routing
 
 
 ```javascript
-/* global jQuery*/
-'use strict';
-
 angular.module( 'core' ).controller( 'RecordController', [ '$q', 'LogService', 'NotificationService',
     'UserStateService', 'UtilityService', 'NetsuiteSessionService', 'RecordService', 'LoadingService',
     'StateTransitionService', 'LicenseService', 'EmailAttacherService', 'NetsuiteBundleService', 'NateroService',
@@ -327,7 +288,7 @@ angular.module( 'core' ).controller( 'RecordController', [ '$q', 'LogService', '
             .then( LoadingService.unload );
         };
 
-
+        /** controller entry point */
         ( function runRecordController ( record ) {
             LicenseService.validateUserLicense()
             .then( NetsuiteSessionService.validateCurrentNetsuiteSession )
@@ -440,4 +401,5 @@ angular.module( 'core' ).controller( 'RecordController', [ '$q', 'LogService', '
             .then( LoadingService.unload );
         } )( recordsList[index] );
     }
-] );```
+] );
+```
